@@ -1,0 +1,295 @@
+{
+  "manifest_version": "0.3",
+  "name": "invezgo-mcp",
+  "display_name": "Invezgo MCP",
+  "version": "1.0.0",
+  "description": "MCP server untuk mengakses data saham Indonesia dari Invezgo.",
+  "long_description": "Invezgo MCP menyediakan tool read-only untuk data pasar saham Indonesia serta data personal pengguna Invezgo seperti portfolio, watchlist, journal, dan trade summary. Bundle ini berjalan lokal melalui stdio dan membutuhkan API key Invezgo.",
+  "author": {
+    "name": "Invezgo"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/invezgo/invezgo-mcp"
+  },
+  "homepage": "https://invezgo.com",
+  "documentation": "https://invezgo.com",
+  "support": "https://github.com/invezgo/invezgo-mcp/issues",
+  "icon": "icon.png",
+  "server": {
+    "type": "node",
+    "entry_point": "dist/server.js",
+    "mcp_config": {
+      "command": "node",
+      "args": ["${__dirname}/dist/server.js", "--stdio"],
+      "env": {
+        "INVEZGO_API_KEY": "${user_config.api_key}",
+        "MCP_TRANSPORT": "stdio"
+      }
+    }
+  },
+  "tools": [
+    {
+      "name": "information",
+      "description": "Informasi perusahaan sesuai kode emiten (code). Jenis data: Cross Section. Update sesuai laporan masing-masing perusahaan setiap bulan"
+    },
+    {
+      "name": "list-stock",
+      "description": "Daftar perusahaan tercatat di Bursa Efek Indonesia. Tidak termasuk perusahaan yang telah delisting dari Bursa Efek Indonesia. Update Realtime dan mengikuti perkembangan perusahaan IPO."
+    },
+    {
+      "name": "list-broker",
+      "description": "Daftar sekuritas atau broker tercatat di Bursa Efek Indonesia. Update Realtime dan mengikuti perkembangan MKBD broker."
+    },
+    {
+      "name": "top-change",
+      "description": "Daftar perusahaan yang mengalami perubahan harga terbesar pada tanggal tertentu. Update Realtime dan mengikuti perkembangan perusahaan IPO."
+    },
+    {
+      "name": "top-foreign",
+      "description": "Daftar akumulasi dan distribusi pergerakan asing saham teratas pada tanggal (date) tertentu. Jenis data: Cross Section. Update EOD setiap hari."
+    },
+    {
+      "name": "top-accumulation",
+      "description": "Daftar akumulasi dan distribusi pergerakan asing saham teratas pada tanggal (date) tertentu. Jenis data: Cross Section. Update EOD setiap hari."
+    },
+    {
+      "name": "chart",
+      "description": "Grafik harga saham perusahaan dengan rentang tanggal tertentu. Jenis data: Time Series. Update Realtime dan mengikuti perkembangan perusahaan IPO."
+    },
+    {
+      "name": "chart-indicator",
+      "description": "Grafik indikator saham perusahaan dengan rentang tanggal tertentu. Jenis data: Time Series. Update Realtime dan mengikuti perkembangan perusahaan IPO."
+    },
+    {
+      "name": "shareholder-number",
+      "description": "Data jumlah investor pada saham sesuai kode emiten (code). Jenis data: Cross Section / Time Series. Update sesuai laporan masing-masing perusahaan setiap bulan"
+    },
+    {
+      "name": "shareholder",
+      "description": "Data komposisi kepemilikan saham sesuai kode emiten (code). Jenis data: Cross Section berdasarkan data terbaru. Update sesuai laporan masing-masing perusahaan setiap bulan"
+    },
+    {
+      "name": "shareholder-detail",
+      "description": "Data komposisi kepemilikan saham sesuai kode emiten (code). Jenis data: Cross Section berdasarkan data terbaru. Update sesuai laporan masing-masing perusahaan setiap bulan"
+    },
+    {
+      "name": "shareholder-one-detail",
+      "description": "Data komposisi kepemilikan saham sesuai kode emiten (code). Jenis data: Cross Section berdasarkan data terbaru. Update sesuai laporan masing-masing perusahaan setiap bulan"
+    },
+    {
+      "name": "shareholder-ksei",
+      "description": "Data komposisi kepemilikan investor asing dan domestik dalam beberapa grup pada saham berdasarkan data KSEI sesuai kode emiten (code) dan jumlah bulan (range). Jenis data: Cross Section / Time Series. Update tanggal 02 setiap bulan."
+    },
+    {
+      "name": "summary-stock",
+      "description": "Data broker summary sesuai dengan kode emiten (code) dan tanggal awal (from) dan akhir (to). Jenis data: Cross Section / Time Series. Update EOD setiap 17.30 WIB"
+    },
+    {
+      "name": "summary-broker",
+      "description": "Data broker summary sesuai dengan kode broker (code) dan tanggal awal (from) dan akhir (to). Jenis data: Cross Section / Time Series. Update EOD setiap 17.30 WIB"
+    },
+    {
+      "name": "inventory-stock",
+      "description": "Visualisasi inventory atau transaksi data broker summary sesuai dengan kode emiten (code) dan tanggal awal (from) dan akhir (to). Jenis data: Time Series. Update EOD setiap 18.00 WIB"
+    },
+    {
+      "name": "inventory-broker",
+      "description": "Visualisasi inventory atau transaksi data broker summary sesuai dengan kode broker (code) dan tanggal awal (from) dan akhir (to). Jenis data: Time Series. Update EOD setiap 18.00 WIB"
+    },
+    {
+      "name": "momentum",
+      "description": "Grafik momentum saham sesuai dengan kode emiten (code) dan tanggal (date) dan range (range). Jenis data: Time Series. Update EOD setiap 18.00 WIB"
+    },
+    {
+      "name": "intraday-inventory",
+      "description": "Grafik inventory atau transaksi data broker summary sesuai dengan kode emiten (code) dan tanggal awal (from) dan akhir (to). Jenis data: Time Series. Update EOD setiap 18.00 WIB"
+    },
+    {
+      "name": "sankey",
+      "description": "Grafik sankey atau transaksi data broker summary sesuai dengan kode emiten (code) dan tanggal awal (from) dan akhir (to). Jenis data: Time Series. Update EOD setiap 18.00 WIB"
+    },
+    {
+      "name": "insider",
+      "description": "Data pemegang saham atau insider sesuai dengan kode emiten (code) dan tanggal awal (from) dan akhir (to). Jenis data: Cross Section. Update EOD setiap 18.00 WIB"
+    },
+    {
+      "name": "above-five-percent",
+      "description": "Data pemegang saham atau insider sesuai dengan kode emiten (code) dan tanggal awal (from) dan akhir (to). Jenis data: Cross Section. Update EOD setiap 18.00 WIB"
+    },
+    {
+      "name": "above-one-percent",
+      "description": "Data pemegang saham atau insider sesuai dengan kode emiten (code) dan tanggal awal (from) dan akhir (to). Jenis data: Cross Section. Update EOD setiap 18.00 WIB"
+    },
+    {
+      "name": "price-diary",
+      "description": "Tabel perubahan harga saham harian dengan kode emiten (code). Jenis data: Time Series. Update Realtime"
+    },
+    {
+      "name": "price-seasonal",
+      "description": "Tabel perubahan harga saham bulanan dengan kode emiten (code). Jenis data: Time Series. Update Realtime"
+    },
+    {
+      "name": "search-stock",
+      "description": "Cari perusahaan berdasarkan kata kunci (query). Mendukung pencarian dengan kata kunci (query). Query dapat berupa nama perusahaan, kode emiten, industri, atau kategori."
+    },
+    {
+      "name": "news",
+      "description": "Cari berita terkait saham berdasarkan kode emiten (code). Maksimal 20 berita terkait saham berdasarkan kode emiten (code). Dapat digunakan untuk Analisa Sentimen."
+    },
+    {
+      "name": "disclosure",
+      "description": "Cari keterbukaan informasi (disclosure) terkait saham berdasarkan kode emiten (code). Maksimal 20 keterbukaan informasi terkait saham berdasarkan kode emiten (code). Dapat digunakan untuk Analisa Sentimen."
+    },
+    {
+      "name": "financial",
+      "description": "Data laporan keuangan saham sesuai dengan kode emiten (code) dan jenis statement (statement) dan jenis tanggal periode (type) dan jumlah data (limit). Jenis data: Panel. Update tergantung laporan dari emiten"
+    },
+    {
+      "name": "keystat",
+      "description": "Data laporan keuangan saham sesuai dengan kode emiten (code) dan jenis tanggal periode (type) dan jumlah data (limit). Jenis data: Panel. Update tergantung laporan dari emiten"
+    },
+    {
+      "name": "intraday",
+      "description": "Grafik intraday saham sesuai dengan kode emiten (code) dan jenis pasar (market). Jenis data: Time Series. Update Realtime"
+    },
+    {
+      "name": "order-book",
+      "description": "Data order book atau harga saham sesuai dengan kode emiten (code). Jenis data: Cross Section. Update Realtime"
+    },
+    {
+      "name": "calendar",
+      "description": "Data calendar atau harga saham sesuai dengan kode emiten (code) dan tanggal (date) dan jenis corporate action (type). Jenis data: Cross Section. Update Realtime"
+    },
+    {
+      "name": "screener",
+      "description": "Data screener atau harga saham sesuai dengan kode emiten (code). Jenis data: Cross Section. Update Realtime"
+    },
+    {
+      "name": "list-index",
+      "description": "Daftar lengkap index yang tersedia di Bursa Efek Indonesia (BEI) termasuk COMPOSITE/IHSG, LQ45, IDX30, sektoral, syariah, dan lainnya. Update Realtime."
+    },
+    {
+      "name": "index-chart",
+      "description": "Grafik harga index BEI dengan rentang tanggal tertentu. Mendukung COMPOSITE, LQ45, IDX30, dan index lainnya. Jenis data: Time Series. Update Realtime."
+    },
+    {
+      "name": "multi-time-chart",
+      "description": "Grafik multi-timeframe untuk saham atau index berdasarkan rentang tanggal dan timeframe."
+    },
+    {
+      "name": "shareholder-detail-one-spec",
+      "description": "Data kepemilikan saham >1% berdasarkan kode saham atau nama pemegang saham."
+    },
+    {
+      "name": "shareholder-relation",
+      "description": "Graf relasi pemegang saham berdasarkan code/name dengan parameter graph opsional."
+    },
+    {
+      "name": "shareholder-classification",
+      "description": "Data lengkap klasifikasi pemegang saham berdasarkan kode saham dan range bulan."
+    },
+    {
+      "name": "shareholder-classify-table",
+      "description": "Tabel klasifikasi pemegang saham terbaru berdasarkan kode saham."
+    },
+    {
+      "name": "sector-stalker",
+      "description": "Analisis pergerakan harga index sektoral atau saham dalam rentang waktu tertentu. Mendukung perbandingan performa antar sektor. Jenis data: Time Series. Update setiap hari bursa."
+    },
+    {
+      "name": "intraday-index",
+      "description": "Data harga intraday real-time untuk index BEI seperti COMPOSITE/IHSG, LQ45, IDX30. Jenis data: Time Series. Update Realtime."
+    },
+    {
+      "name": "sector-rotation",
+      "description": "Analisis rotasi sektor dalam rentang waktu tertentu. Menampilkan pergerakan dan perbandingan antar sektor. Jenis data: Time Series."
+    },
+    {
+      "name": "broker-stalker",
+      "description": "Analisis aktivitas broker tertentu pada saham specific. Menampilkan data transaksi broker untuk saham tersebut."
+    },
+    {
+      "name": "broker-stalker-list",
+      "description": "Daftar broker yang melakukan transaksi pada saham tertentu. Menampilkan semua broker yang aktif pada saham."
+    },
+    {
+      "name": "price-table",
+      "description": "Tabel distribusi harga saham. Menampilkan data transaksi berdasarkan level harga."
+    },
+    {
+      "name": "time-table",
+      "description": "Tabel distribusi waktu transaksi saham. Menampilkan data transaksi berdasarkan waktu."
+    },
+    {
+      "name": "intraday-data",
+      "description": "Data intraday saham ringkas berdasarkan kode emiten, market, dan optional tanggal historis."
+    },
+    {
+      "name": "shareholder-high",
+      "description": "Data konsentrasi kepemilikan saham tinggi untuk semua emiten."
+    },
+    {
+      "name": "watchlist",
+      "description": "Get watchlist"
+    },
+    {
+      "name": "journal",
+      "description": "Get journal"
+    },
+    {
+      "name": "journal-summary",
+      "description": "Get journal summary"
+    },
+    {
+      "name": "portfolio",
+      "description": "Get portfolio"
+    },
+    {
+      "name": "portfolio-summary",
+      "description": "Get portfolio summary"
+    },
+    {
+      "name": "trade",
+      "description": "Get trade"
+    },
+    {
+      "name": "trade-summary",
+      "description": "Get trade summary"
+    },
+    {
+      "name": "watchlist-detail",
+      "description": "Get detail watchlist berdasarkan ID"
+    },
+    {
+      "name": "trade-summary-chart",
+      "description": "Get trade summary chart untuk analisis performa trading"
+    }
+  ],
+  "keywords": [
+    "invezgo",
+    "stock",
+    "investment",
+    "indonesia",
+    "idx",
+    "portfolio"
+  ],
+  "license": "ISC",
+  "privacy_policies": ["https://invezgo.com/privacy"],
+  "compatibility": {
+    "claude_desktop": ">=0.10.0",
+    "platforms": ["darwin", "win32", "linux"],
+    "runtimes": {
+      "node": ">=18.0.0"
+    }
+  },
+  "user_config": {
+    "api_key": {
+      "type": "string",
+      "title": "API Key",
+      "description": "API key/token Invezgo yang dihasilkan dari halaman https://invezgo.com/setting/api.",
+      "sensitive": true,
+      "required": true
+    }
+  }
+}

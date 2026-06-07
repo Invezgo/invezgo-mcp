@@ -1,0 +1,17 @@
+# Source/development files not required at runtime
+src/
+docs/
+.vscode/
+.idea/
+
+# TypeScript/build metadata
+tsconfig*.json
+*.tsbuildinfo
+
+# Local/development files
+.env
+.env.*
+Dockerfile
+MANIFEST.md
+CLI.md
+*.mcpb
