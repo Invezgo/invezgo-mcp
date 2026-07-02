@@ -230,6 +230,10 @@
       "description": "Data konsentrasi kepemilikan saham tinggi untuk semua emiten."
     },
     {
+      "name": "order-queue",
+      "description": "Mendapatkan antrian order (order tracking) untuk saham pada harga, sisi, halaman, dan limit tertentu."
+    },
+    {
       "name": "watchlist",
       "description": "Get watchlist"
     },

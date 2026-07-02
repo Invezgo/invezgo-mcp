@@ -514,6 +514,32 @@ export const timeTableSchema = z.object({
     .describe("Kode emiten berdasarkan data dari /list/stock (Cth : BBCA)"),
 });
 
+export const orderQueueSchema = z.object({
+  code: z
+    .string()
+    .default("BBCA")
+    .describe("Kode emiten berdasarkan data dari /list/stock (Cth : BBCA)"),
+  price: z
+    .number()
+    .describe("Tingkat harga saham yang ingin ditelusuri (Cth : 935)"),
+  side: z
+    .enum(["BUY", "SELL"])
+    .describe("Sisi order (BUY atau SELL)"),
+  page: z
+    .number()
+    .int()
+    .min(0)
+    .default(0)
+    .describe("Halaman data antrian (default: 0)"),
+  limit: z
+    .number()
+    .int()
+    .min(1)
+    .max(50)
+    .default(50)
+    .describe("Batas jumlah antrian yang ditampilkan (maksimal 50, default: 50)"),
+});
+
 export type CodeIndicatorArgs = z.infer<typeof codeIndicatorSchema>;
 
 export type CodeOnlyArgs = z.infer<typeof codeOnlySchema>;
@@ -591,3 +617,5 @@ export type CodeNameOptionalArgs = z.infer<typeof codeNameOptionalSchema>;
 export type PriceTableArgs = z.infer<typeof priceTableSchema>;
 
 export type TimeTableArgs = z.infer<typeof timeTableSchema>;
+
+export type OrderQueueArgs = z.infer<typeof orderQueueSchema>;

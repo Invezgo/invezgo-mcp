@@ -18,15 +18,15 @@ Invezgo MCP Server menyediakan **59 tools** untuk analisis saham Bursa Efek Indo
 Daftar ini disinkronkan dari registrasi `server.addTool(...)` pada kode:
 
 - `src/tools/personal/index.ts` (9 tools)
-- `src/tools/stock/index.ts` (50 tools)
+- `src/tools/stock/index.ts` (51 tools)
 
 ### Personal Tools (9)
 
 `watchlist`, `journal`, `journal-summary`, `portfolio`, `portfolio-summary`, `trade`, `trade-summary`, `watchlist-detail`, `trade-summary-chart`
 
-### Stock Tools (50)
+### Stock Tools (51)
 
-`information`, `list-stock`, `list-broker`, `top-change`, `top-foreign`, `top-accumulation`, `chart`, `chart-indicator`, `shareholder-number`, `shareholder`, `shareholder-detail`, `shareholder-one-detail`, `shareholder-ksei`, `summary-stock`, `summary-broker`, `inventory-stock`, `inventory-broker`, `momentum`, `intraday-inventory`, `sankey`, `insider`, `above-five-percent`, `above-one-percent`, `price-diary`, `price-seasonal`, `search-stock`, `news`, `disclosure`, `financial`, `keystat`, `intraday`, `order-book`, `calendar`, `screener`, `list-index`, `index-chart`, `multi-time-chart`, `shareholder-detail-one-spec`, `shareholder-relation`, `shareholder-classification`, `shareholder-classify-table`, `sector-stalker`, `intraday-index`, `sector-rotation`, `broker-stalker`, `broker-stalker-list`, `price-table`, `time-table`, `intraday-data`, `shareholder-high`
+`information`, `list-stock`, `list-broker`, `top-change`, `top-foreign`, `top-accumulation`, `chart`, `chart-indicator`, `shareholder-number`, `shareholder`, `shareholder-detail`, `shareholder-one-detail`, `shareholder-ksei`, `summary-stock`, `summary-broker`, `inventory-stock`, `inventory-broker`, `momentum`, `intraday-inventory`, `sankey`, `insider`, `above-five-percent`, `above-one-percent`, `price-diary`, `price-seasonal`, `search-stock`, `news`, `disclosure`, `financial`, `keystat`, `intraday`, `order-book`, `order-queue`, `calendar`, `screener`, `list-index`, `index-chart`, `multi-time-chart`, `shareholder-detail-one-spec`, `shareholder-relation`, `shareholder-classification`, `shareholder-classify-table`, `sector-stalker`, `intraday-index`, `sector-rotation`, `broker-stalker`, `broker-stalker-list`, `price-table`, `time-table`, `intraday-data`, `shareholder-high`
 
 ---
 
@@ -369,6 +369,27 @@ Data order book saham.
 |-----------|------|---------|-----------|
 | `code` | string | "BBCA" | Kode emiten |
 | `market` | enum | "RG" | Jenis Pasar: `RG`, `NG`, `TN` |
+
+---
+
+#### `order-queue`
+
+Mendapatkan antrian order (order tracking) untuk saham pada harga, sisi, halaman, dan limit tertentu.
+
+| Properti        | Nilai                                                                                                                         |
+| --------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| **Deskripsi**   | Mendapatkan antrian order (order tracking) untuk saham pada harga, sisi, halaman, dan limit tertentu. Jenis data: Realtime.  |
+| **Read Only**   | ✅                                                                                                                            |
+| **Destructive** | ❌                                                                                                                            |
+
+**Parameters:**
+| Parameter | Type | Default | Deskripsi |
+|-----------|------|---------|-----------|
+| `code` | string | "BBCA" | Kode emiten |
+| `price` | number | - | Tingkat harga saham yang ingin ditelusuri |
+| `side` | enum | - | Sisi order (BUY atau SELL) |
+| `page` | number | 0 | Halaman data antrian |
+| `limit` | number | 50 | Batas jumlah antrian yang ditampilkan (maksimal 50) |
 
 ---
 

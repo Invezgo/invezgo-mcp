@@ -35,6 +35,7 @@ import {
   ShareholderClassificationArgs,
   ShareholderClassifyTableArgs,
   ShareholderHighArgs,
+  OrderQueueArgs,
 } from "@/schema/stock";
 import { SessionData } from "@/server";
 import { HandlerReturnType } from "@/types/common";
@@ -756,6 +757,20 @@ export const timeTable = async (
   const apiKey = context.session?.apiKey as string;
 
   const data = await customFetch(`analysis/time-table/${args.code}`, apiKey);
+
+  return formatResponse(data);
+};
+
+export const orderQueue = async (
+  args: OrderQueueArgs,
+  context: Context<SessionData>,
+): Promise<HandlerReturnType> => {
+  const apiKey = context.session?.apiKey as string;
+
+  const data = await customFetch(
+    `analysis/queue/${args.code}?price=${args.price}&side=${args.side}&page=${args.page}&limit=${args.limit}`,
+    apiKey,
+  );
 
   return formatResponse(data);
 };

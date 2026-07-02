@@ -35,6 +35,7 @@ import {
   brokerStalkerListSchema,
   priceTableSchema,
   timeTableSchema,
+  orderQueueSchema,
 } from "@/schema/stock";
 import { server } from "@/server";
 import {
@@ -88,6 +89,7 @@ import {
   shareholderHigh,
   shareholderRelation,
   shareholderDetailOne,
+  orderQueue,
 } from "./handler";
 
 export const registerStockTools = (): void => {
@@ -788,5 +790,19 @@ export const registerStockTools = (): void => {
       title: "Konsentrasi Kepemilikan Tinggi",
     },
     execute: async (args, context) => await shareholderHigh(args, context),
+  });
+
+  server.addTool({
+    name: "order-queue",
+    description:
+      "Mendapatkan antrian order (order tracking) untuk saham pada harga, sisi, halaman, dan limit tertentu.",
+    parameters: orderQueueSchema,
+    annotations: {
+      openWorldHint: true,
+      readOnlyHint: true,
+      idempotentHint: true,
+      title: "Antrian Order Saham (Order Queue Tracking)",
+    },
+    execute: async (args, context) => await orderQueue(args, context),
   });
 };
